@@ -3,11 +3,6 @@ let VM = require('ethereumjs-vm').default
 let Account = require('ethereumjs-account').default
 let utils = require('ethereumjs-util')
 let Transaction = require('ethereumjs-tx').Transaction
-//let PStateManager = require('ethereumjs-vm/lib/state/promisified')
-//let PStateManager = require('ethereumjs-vm')
-
-//console.log(PStateManager)
-//console.log(Transaction)
 
 const vm = new VM()
 
@@ -37,14 +32,12 @@ async function runTx(vm, rawTx, pk) {
   const tx = new Transaction(rawTx)
   tx.sign(pk)
 
+  console.log('tx: ', tx)
+
   console.log('------ running tx -------')
   const results = await vm.runTx({
     tx: tx,
   })
-
-  //console.log(results)
-  //console.log('gas used: ' + results.gasUsed.toString())
-  //console.log('returned: ' + results.execResult.return.toString('hex'))
 
   const createdAddress = results.createdAddress
 
@@ -56,26 +49,7 @@ async function runTx(vm, rawTx, pk) {
   console.log('---')
 }
 
-/*
-const PUSH1 = '60'
-const MSTORE = '52'
-const CALLDATASIZE = '36'
-const LT = '10'
-
-const code = [PUSH1, '80', PUSH1, '40', MSTORE, PUSH1, '04', CALLDATASIZE, LT]
-
-*/
 vm.on('step', function(data) {
   console.log(`Opcode: ${data.opcode.name}\tStack: ${data.stack}`)
 })
 
-/*
-vm.runCode({
-  code: Buffer.from(code.join(''), 'hex'),
-  gasLimit: new BN(0xffff),
-})
-  .then(results => {
-    
-  })
-  .catch(err => console.log('Error: ' + err))
-*/

@@ -2,7 +2,7 @@
   "nonce": "0x01",
   "gasPrice": "0x09184e72a000",
   "gasLimit": "0x20710",
-  "value": "0x10",
+  "value": "0x0",
   "to": "0x692a70d2e424a56d2c6c27aa97d1a86395877b3a",
-  "data": "26bceb59802431afcbce1fc194c9eaa417b2fb67dc75a95db0bc7ec6b1c8af11df6a1da9a1f5aac137876480252e5dcac62c354ec0d42b76b0642b6181ed099849ea1d57"
+  "data": "0x26bceb59802431afcbce1fc194c9eaa417b2fb67dc75a95db0bc7ec6b1c8af11df6a1da9a1f5aac137876480252e5dcac62c354ec0d42b76b0642b6181ed099849ea1d57"
 }
